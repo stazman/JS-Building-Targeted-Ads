@@ -7,6 +7,13 @@
 
 // get user's time
 
+// Get the user's time:
+function userTime(){
+	const now = new Date()
+	console.log(now)
+}
+
+userTime()
 
 // helper functions
 // check time of day

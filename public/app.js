@@ -8,7 +8,7 @@
 //     console.log(now)
 // }
 
-//Make sure to call the userTime function after you paste/write the declaration
+//NOTE: Make sure to call the userTime function after you paste/write the declaration for userTime()
 
 // userTime()
 
@@ -23,14 +23,14 @@ console.log(userTime())
 function getMealTime(){
     const tod = userTime()
 
-    if (tod > 20) {return 'late-night snack'}
-    else if (tod > 16) {return 'dinner'}
-    else if (tod > 11) {return 'lunch'}
-    else {return 'breakfast'}
+    // if (tod > 20) {return 'late-night snack'}
+    // else if (tod > 16) {return 'dinner'}
+    // else if (tod > 11) {return 'lunch'}
+    // else {return 'breakfast'}
 
     // A ternary is another way to write an if-else statement
     // Another way to write the above lines would to refactor it as:
-    // return tod > 20 ? 'late-night snack' : tod > 16 ? 'dinner' : tod > 11 ? 'lunch' : 'breakfast' // <--- this is an example of a ternary
+    return tod > 20 ? 'late-night snack' : tod > 16 ? 'dinner' : tod > 11 ? 'lunch' : 'breakfast' // <--- this is an example of a ternary
 }
 
   console.log(getMealTime())
@@ -73,13 +73,13 @@ function buildAd1(){
     inner.innerHTML = `We've got the best <span>${mealTime}</span> in town`
     content.append(inner)
 }
-buildAd1()
+// buildAd1()
 
 
 // build ad 2
 
 // Build Ad 2
-function buildAd2(coordinates){
+async function buildAd2(coordinates){
     const coords = coordinates
     const href = `https://www.google.com/maps/search/coffee/@${coords[0]},${coords[1]},15z/`
     let content = document.querySelector('.ad2')
@@ -88,7 +88,15 @@ function buildAd2(coordinates){
     content.append(inner)
 }
 
-console.log(buildAd2(getCoords()))
+// On load, build ads:
+window.onload = async () => {
+    buildAd1()
+    const coords = await getCoords()
+    buildAd2(coords)
+}
+
+
+// console.log(buildAd2(getCoords()))
 
 // event listeners
 // on load, build ads
